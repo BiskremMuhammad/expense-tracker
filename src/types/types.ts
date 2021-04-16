@@ -30,12 +30,4 @@ export interface Expense {
    * @memberof Expense
    */
   id: string;
-
-  /**
-   * the type of amount one of which is money in or money out
-   *
-   * @type {"IN" | "OUT"}
-   * @memberof Expense
-   */
-  type: "IN" | "OUT";
 }
