@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
+import { AddExpense } from "./components/add-expense";
+import { Balance } from "./components/balance";
 
 import { Header } from "./components/header";
+import { IncomeExpenses } from "./components/income-expenses";
+import { Transactions } from "./components/transactions";
 import { ContextState, ExpensesContext } from "./context/context";
 
 function App() {
@@ -8,8 +12,12 @@ function App() {
 
   return (
     <ExpensesContext.Provider value={expenses}>
+      <Header />
       <div className="container">
-        <Header />
+        <Balance />
+        <IncomeExpenses />
+        <Transactions />
+        <AddExpense />
       </div>
     </ExpensesContext.Provider>
   );
