@@ -1,4 +1,5 @@
-import React, { createContext } from "react";
+import React, { createContext, Dispatch } from "react";
+import { ActionTypes } from "../reducer/action-types";
 
 import { Expense } from "../types/types";
 
@@ -16,10 +17,19 @@ export interface ContextState {
    * @memberof ContextState
    */
   expenses: Expense[];
+
+  /**
+   * to dispatch an action anywhere in the app
+   *
+   * @type {Dispatch<ActionTypes>}
+   * @memberof ContextState
+   */
+  dispatch: Dispatch<ActionTypes>;
 }
 
 export const INITIAL_STATE: ContextState = {
   expenses: [],
+  dispatch: () => null,
 };
 
 export const ExpensesContext = createContext<ContextState>(INITIAL_STATE);

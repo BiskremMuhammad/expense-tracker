@@ -8,10 +8,10 @@ import { Transactions } from "./components/transactions";
 import { ContextState, ExpensesContext } from "./context/context";
 
 function App() {
-  const expenses = useContext<ContextState>(ExpensesContext);
+  const { expenses, dispatch } = useContext<ContextState>(ExpensesContext);
 
   return (
-    <ExpensesContext.Provider value={expenses}>
+    <ExpensesContext.Provider value={{ expenses, dispatch }}>
       <Header />
       <div className="container">
         <Balance />
