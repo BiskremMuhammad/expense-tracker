@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import { ContextState, ExpensesContext } from "../context/context";
-import { Expense } from "../types/types";
 
 export const IncomeExpenses = () => {
   const { expenses } = useContext<ContextState>(ExpensesContext);
@@ -11,7 +10,7 @@ export const IncomeExpenses = () => {
     ? expenses[0].amount > 0
       ? expenses[0].amount
       : 0
-    : expenses.reduce<number>((a, b) => (a + b.amount > 0 ? b.amount : 0), 0);
+    : expenses.reduce<number>((a, b) => a + (b.amount > 0 ? b.amount : 0), 0);
 
   const expense: number = !expenses.length
     ? 0
@@ -19,7 +18,7 @@ export const IncomeExpenses = () => {
     ? expenses[0].amount < 0
       ? expenses[0].amount
       : 0
-    : expenses.reduce<number>((a, b) => (a + b.amount < 0 ? b.amount : 0), 0);
+    : expenses.reduce<number>((a, b) => a + (b.amount < 0 ? b.amount : 0), 0);
   return (
     <div className="inc-exp-container">
       <div>
