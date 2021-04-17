@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch } from "react";
-import { ActionTypes } from "../reducer/action-types";
+import { Actions } from "../reducer/action-types";
 
 import { Expense } from "../types/types";
 
@@ -24,7 +24,7 @@ export interface ContextState {
    * @type {Dispatch<ActionTypes>}
    * @memberof ContextState
    */
-  dispatch: Dispatch<ActionTypes>;
+  dispatch: Dispatch<Actions>;
 }
 
 export const INITIAL_STATE: ContextState = {
