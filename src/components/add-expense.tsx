@@ -1,8 +1,7 @@
-import React, { Reducer, useReducer, useState } from "react";
+import React, { useContext, useState } from "react";
 import { v4 as uuid } from "uuid";
-import { ContextState, INITIAL_STATE } from "../context/context";
+import { ContextState, ExpensesContext } from "../context/context";
 import { ActionTypes } from "../reducer/action-types";
-import { reducer } from "../reducer/reducer";
 import { Expense } from "../types/types";
 
 export const AddExpense = () => {
@@ -10,7 +9,7 @@ export const AddExpense = () => {
   const [amount, setAmount] = useState<string>("");
   const [errors, setErrors] = useState<boolean>(false);
 
-  const [_, dispatch] = useReducer(reducer, INITIAL_STATE);
+  const { dispatch } = useContext<ContextState>(ExpensesContext);
 
   const onAddTransaction = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>

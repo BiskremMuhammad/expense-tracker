@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useReducer } from "react";
 import { AddExpense } from "./components/add-expense";
 import { Balance } from "./components/balance";
 
 import { Header } from "./components/header";
 import { IncomeExpenses } from "./components/income-expenses";
 import { Transactions } from "./components/transactions";
-import { ContextState, ExpensesContext } from "./context/context";
+import { ExpensesContext, INITIAL_STATE } from "./context/context";
+import { reducer } from "./reducer/reducer";
 
 function App() {
-  const { expenses, dispatch } = useContext<ContextState>(ExpensesContext);
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
-    <ExpensesContext.Provider value={{ expenses, dispatch }}>
+    <ExpensesContext.Provider value={{ expenses: state.expenses, dispatch }}>
       <Header />
       <div className="container">
         <Balance />

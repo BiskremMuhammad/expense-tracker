@@ -8,12 +8,9 @@ export const Balance = () => {
     ? 0
     : expenses.length === 1
     ? expenses[0].amount
-    : expenses.reduce<number>(
-        (a, b) =>
-          typeof a === "number" ? a : (a as Expense).amount + b.amount,
-        0
-      );
+    : expenses.reduce<number>((a, b) => a + b.amount, 0);
 
+  console.log("re-rendered balance with transactions: ", expenses);
   return (
     <>
       <h4>Your Balance</h4>
