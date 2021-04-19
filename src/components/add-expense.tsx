@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { ContextState, ExpensesContext } from "../context/context";
 import { ActionTypes } from "../reducer/action-types";
@@ -8,6 +8,7 @@ export const AddExpense = () => {
   const [desc, setDesc] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [errors, setErrors] = useState<boolean>(false);
+  const rerenders = useRef(0);
 
   const { dispatch } = useContext<ContextState>(ExpensesContext);
 
@@ -38,6 +39,8 @@ export const AddExpense = () => {
     setDesc("");
     setAmount("");
   };
+
+  console.log("add-transaction component re-renders: ", rerenders.current++);
 
   return (
     <>
